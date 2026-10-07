@@ -13,6 +13,7 @@ export interface KeyboardRouterActions {
     closeShortcutHelp: () => void;
     closeTreeSearch: () => void;
     copyReviews: () => void;
+    cycleCodeFont: () => void;
     cycleTheme: () => void;
     focusNextFile: () => void;
     focusPreviousFile: () => void;
@@ -105,6 +106,9 @@ function routeAppShortcut(event: KeyboardEvent, options: KeyboardRouterOptions):
             break;
         case 'd':
             actions.cycleTheme();
+            break;
+        case 'f':
+            actions.cycleCodeFont();
             break;
         case 'c':
             actions.toggleAllCollapsed();

@@ -35,7 +35,7 @@ function useAppState() {
     const [patch, setPatch] = useState('');
     const [loadedPatchBytes, setLoadedPatchBytes] = useState<number | undefined>(undefined);
     const [diffStyle, setDiffStyleRaw] = useState<DiffStyle>(() => loadPreferences().diffStyle ?? defaultDiffStyle());
-    const [overflow, setOverflowRaw] = useState<Overflow>(() => loadPreferences().overflow ?? 'scroll');
+    const [overflow, setOverflowRaw] = useState<Overflow>(() => loadPreferences().overflow ?? 'wrap');
     const [showBackgrounds, setShowBackgrounds] = useState(true);
     const [lineNumbers, setLineNumbers] = useState(true);
     const [collapsedIds, setCollapsedIds] = useState<Set<ProjectedFileIdentity>>(() => new Set());

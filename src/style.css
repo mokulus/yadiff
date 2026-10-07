@@ -1,118 +1,167 @@
+@font-face {
+  font-family: "Go";
+  src: url("/fonts/go/Go-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Go";
+  src: url("/fonts/go/Go-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Go";
+  src: url("/fonts/go/Go-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Go";
+  src: url("/fonts/go/Go-Bold-Italic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Proof: ink on paper. Accent ink marks reviews, selection and focus;
+   verdigris, madder and ochre carry added, deleted and modified. */
 :root {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color-scheme: dark;
-  --yd-bg: #09090b;
-  --yd-fg: #f4f4f5;
-  --yd-muted: #a1a1aa;
-  --yd-subtle: #71717a;
-  --yd-border: rgba(255, 255, 255, 0.08);
-  --yd-surface: rgba(255, 255, 255, 0.04);
-  --yd-surface-hover: rgba(255, 255, 255, 0.06);
-  --yd-surface-active: rgba(255, 255, 255, 0.14);
-  --yd-toolbar-bg: rgba(9, 9, 11, 0.88);
-  --yd-card-bg: rgba(255, 255, 255, 0.04);
-  --yd-card-border: rgba(255, 255, 255, 0.1);
-  --yd-input-bg: #09090b;
-  --yd-input-border: rgba(82, 82, 91, 0.95);
-  --yd-input-focus-border: #60a5fa;
-  --yd-input-focus-ring: rgba(96, 165, 250, 0.16);
-  --yd-accent: #60a5fa;
-  --yd-accent-text: #93c5fd;
-  --yd-accent-bg: rgba(96, 165, 250, 0.18);
-  --yd-accent-border: rgba(96, 165, 250, 0.45);
-  --yd-plus: #4ade80;
-  --yd-minus: #f87171;
-  --yd-warn-text: #fde68a;
-  --yd-warn-border: rgba(250, 204, 21, 0.22);
-  --yd-warn-bg: rgba(250, 204, 21, 0.09);
-  --yd-success-bg: rgba(74, 222, 128, 0.16);
-  --yd-success-text: #86efac;
-  --yd-error-bg: rgba(248, 113, 113, 0.16);
-  --yd-error-text: #fca5a5;
-  --yd-review-bg: #18181b;
-  --yd-review-border: rgba(82, 82, 91, 0.9);
-  --yd-change-modified-bg: rgba(250, 204, 21, 0.14);
-  --yd-change-modified-fg: #facc15;
-  --yd-change-new-bg: rgba(74, 222, 128, 0.14);
-  --yd-change-new-fg: #4ade80;
-  --yd-change-deleted-bg: rgba(248, 113, 113, 0.14);
-  --yd-change-deleted-fg: #f87171;
-  --yd-change-renamed-bg: rgba(96, 165, 250, 0.14);
-  --yd-change-renamed-fg: #60a5fa;
-  --yd-gradient: #09090b;
-  --yd-save-btn-bg: #4ade80;
-  --yd-save-btn-fg: #052e16;
-  --yd-cancel-btn-bg: rgba(255, 255, 255, 0.09);
-  --yd-cancel-btn-fg: #d4d4d8;
-  --yd-delete-btn-bg: rgba(248, 113, 113, 0.12);
-  --yd-delete-btn-bg-hover: rgba(248, 113, 113, 0.2);
-  --yd-delete-btn-fg: #fca5a5;
-  --yd-popover-bg: rgba(24, 24, 27, 0.98);
-  --yd-popover-border: rgba(255, 255, 255, 0.12);
-  --yd-popover-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  --yd-kbd-border: rgba(255, 255, 255, 0.14);
-  --yd-kbd-bg: rgba(255, 255, 255, 0.06);
+  --yd-code-font: "Input Serif", "Source Serif 4 Variable", Charter, serif;
+  --yd-bg: #15120e;
+  --yd-fg: #e5e1d7;
+  --yd-muted: #a49e94;
+  --yd-subtle: #857f77;
+  --yd-border: #2c2824;
+  --yd-surface: #211d19;
+  --yd-surface-hover: #29241f;
+  --yd-surface-active: #37322c;
+  --yd-toolbar-bg: rgb(21 18 14 / 0.9);
+  --yd-card-bg: #1c1915;
+  --yd-card-border: #2c2824;
+  --yd-input-bg: #110e0b;
+  --yd-input-border: #413c36;
+  --yd-input-focus-border: #84a1f0;
+  --yd-input-focus-ring: #384a7e;
+  --yd-accent: #84a1f0;
+  --yd-accent-text: #a5bcf9;
+  --yd-accent-bg: #212c4c;
+  --yd-accent-border: #4b609c;
+  --yd-plus: #5abb88;
+  --yd-minus: #e66f62;
+  --yd-warn-text: #efcc83;
+  --yd-warn-border: #6a5124;
+  --yd-warn-bg: #403012;
+  --yd-success-bg: #153524;
+  --yd-success-text: #8bd8ab;
+  --yd-error-bg: #47211c;
+  --yd-error-text: #f8a59a;
+  --yd-review-bg: #211d19;
+  --yd-review-border: #413c36;
+  --yd-change-modified-bg: #403012;
+  --yd-change-modified-fg: #efcc83;
+  --yd-change-new-bg: #153524;
+  --yd-change-new-fg: #8bd8ab;
+  --yd-change-deleted-bg: #47211c;
+  --yd-change-deleted-fg: #f8a59a;
+  --yd-change-renamed-bg: #212c4c;
+  --yd-change-renamed-fg: #a5bcf9;
+  --yd-gradient: #15120e;
+  --yd-save-btn-bg: #84a1f0;
+  --yd-save-btn-fg: #15120e;
+  --yd-cancel-btn-bg: #29241f;
+  --yd-cancel-btn-fg: #e5e1d7;
+  --yd-delete-btn-bg: #47211c;
+  --yd-delete-btn-bg-hover: #602a25;
+  --yd-delete-btn-fg: #f8a59a;
+  --yd-popover-bg: #211d19;
+  --yd-popover-border: #413c36;
+  --yd-popover-shadow: 0 16px 40px rgb(0 0 0 / 0.45);
+  --yd-kbd-border: #413c36;
+  --yd-kbd-bg: #29241f;
+  --yd-selection: #384a7e;
+  --yd-scrollbar: #413c36;
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --yd-bg: #ffffff;
-  --yd-fg: #18181b;
-  --yd-muted: #71717a;
-  --yd-subtle: #a1a1aa;
-  --yd-border: rgba(0, 0, 0, 0.08);
-  --yd-surface: rgba(0, 0, 0, 0.03);
-  --yd-surface-hover: rgba(0, 0, 0, 0.05);
-  --yd-surface-active: rgba(0, 0, 0, 0.1);
-  --yd-toolbar-bg: rgba(255, 255, 255, 0.92);
-  --yd-card-bg: rgba(0, 0, 0, 0.02);
-  --yd-card-border: rgba(0, 0, 0, 0.1);
-  --yd-input-bg: #ffffff;
-  --yd-input-border: rgba(0, 0, 0, 0.15);
-  --yd-input-focus-border: #2563eb;
-  --yd-input-focus-ring: rgba(37, 99, 235, 0.16);
-  --yd-accent: #2563eb;
-  --yd-accent-text: #1d4ed8;
-  --yd-accent-bg: rgba(37, 99, 235, 0.1);
-  --yd-accent-border: rgba(37, 99, 235, 0.4);
-  --yd-plus: #16a34a;
-  --yd-minus: #dc2626;
-  --yd-warn-text: #92400e;
-  --yd-warn-border: rgba(217, 119, 6, 0.3);
-  --yd-warn-bg: rgba(252, 211, 77, 0.15);
-  --yd-success-bg: rgba(22, 163, 74, 0.1);
-  --yd-success-text: #15803d;
-  --yd-error-bg: rgba(220, 38, 38, 0.1);
-  --yd-error-text: #b91c1c;
-  --yd-review-bg: #f9fafb;
-  --yd-review-border: rgba(0, 0, 0, 0.12);
-  --yd-change-modified-bg: rgba(217, 119, 6, 0.1);
-  --yd-change-modified-fg: #b45309;
-  --yd-change-new-bg: rgba(22, 163, 74, 0.1);
-  --yd-change-new-fg: #16a34a;
-  --yd-change-deleted-bg: rgba(220, 38, 38, 0.1);
-  --yd-change-deleted-fg: #dc2626;
-  --yd-change-renamed-bg: rgba(37, 99, 235, 0.1);
-  --yd-change-renamed-fg: #2563eb;
-  --yd-gradient: #ffffff;
-  --yd-save-btn-bg: #16a34a;
-  --yd-save-btn-fg: #ffffff;
-  --yd-cancel-btn-bg: rgba(0, 0, 0, 0.06);
-  --yd-cancel-btn-fg: #3f3f46;
-  --yd-delete-btn-bg: rgba(220, 38, 38, 0.08);
-  --yd-delete-btn-bg-hover: rgba(220, 38, 38, 0.14);
-  --yd-delete-btn-fg: #b91c1c;
-  --yd-popover-bg: rgba(255, 255, 255, 0.98);
-  --yd-popover-border: rgba(0, 0, 0, 0.1);
-  --yd-popover-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-  --yd-kbd-border: rgba(0, 0, 0, 0.12);
-  --yd-kbd-bg: rgba(0, 0, 0, 0.04);
+  --yd-bg: #fcf9f2;
+  --yd-fg: #1d222a;
+  --yd-muted: #625950;
+  --yd-subtle: #777069;
+  --yd-border: #dfdad1;
+  --yd-surface: #f4f0e7;
+  --yd-surface-hover: #eee9df;
+  --yd-surface-active: #e2dbd1;
+  --yd-toolbar-bg: rgb(252 249 242 / 0.9);
+  --yd-card-bg: #fffdfa;
+  --yd-card-border: #dfdad1;
+  --yd-input-bg: #fffdfa;
+  --yd-input-border: #c3bdb3;
+  --yd-input-focus-border: #3550b3;
+  --yd-input-focus-ring: #a8bdf2;
+  --yd-accent: #3550b3;
+  --yd-accent-text: #2b439d;
+  --yd-accent-bg: #dee8ff;
+  --yd-accent-border: #8ca3de;
+  --yd-plus: #14764a;
+  --yd-minus: #a8372a;
+  --yd-warn-text: #805307;
+  --yd-warn-border: #e0bf89;
+  --yd-warn-bg: #f9eaca;
+  --yd-success-bg: #d6f4e1;
+  --yd-success-text: #01603a;
+  --yd-error-bg: #ffe3de;
+  --yd-error-text: #9e2e21;
+  --yd-review-bg: #fcf9f2;
+  --yd-review-border: #c3bdb3;
+  --yd-change-modified-bg: #f9eaca;
+  --yd-change-modified-fg: #805307;
+  --yd-change-new-bg: #d6f4e1;
+  --yd-change-new-fg: #01603a;
+  --yd-change-deleted-bg: #ffe3de;
+  --yd-change-deleted-fg: #9e2e21;
+  --yd-change-renamed-bg: #dee8ff;
+  --yd-change-renamed-fg: #2b439d;
+  --yd-gradient: #fcf9f2;
+  --yd-save-btn-bg: #3550b3;
+  --yd-save-btn-fg: #fffdfa;
+  --yd-cancel-btn-bg: #eee9df;
+  --yd-cancel-btn-fg: #1d222a;
+  --yd-delete-btn-bg: #ffe3de;
+  --yd-delete-btn-bg-hover: #fed2cb;
+  --yd-delete-btn-fg: #9e2e21;
+  --yd-popover-bg: #fffdfa;
+  --yd-popover-border: #dfdad1;
+  --yd-popover-shadow: 0 12px 32px rgb(70 52 24 / 0.14);
+  --yd-kbd-border: #c3bdb3;
+  --yd-kbd-bg: #f4f0e7;
+  --yd-selection: #c9d6fb;
+  --yd-scrollbar: #c3bdb3;
 }
+
+:root[data-code-font="input-serif"] { --yd-code-font: "Input Serif", "Source Serif 4 Variable", Charter, serif; }
+/* Book faces have narrow spaces; widen them so indentation stays legible. */
+:root[data-code-font="source-serif"] { --yd-code-font: "Source Serif 4 Variable", Charter, serif; --yd-code-word-spacing: 0.2em; }
+:root[data-code-font="charter"] { --yd-code-font: Charter, "Bitstream Charter", "Source Serif 4 Variable", serif; --yd-code-word-spacing: 0.2em; }
+:root[data-code-font="input-sans"] { --yd-code-font: "Input Sans", "Go", system-ui, sans-serif; }
+:root[data-code-font="go"] { --yd-code-font: "Go", system-ui, sans-serif; --yd-code-word-spacing: 0.15em; }
+:root[data-code-font="aporetic"] { --yd-code-font: "Aporetic Serif", "Input Serif", serif; }
+:root[data-code-font="mono"] { --yd-code-font: "SF Mono", Menlo, ui-monospace, monospace; }
+
+::selection { background: var(--yd-selection); }
+:root { accent-color: var(--yd-accent); caret-color: var(--yd-accent); scrollbar-color: var(--yd-scrollbar) transparent; }
+:focus-visible { outline: 2px solid var(--yd-accent); outline-offset: 2px; }
 
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; margin: 0; }
 body { overflow: hidden; background: var(--yd-bg); color: var(--yd-fg); }
-button, input { font: inherit; }
+button, input, textarea { font: inherit; }
 .srOnly {
   position: absolute;
   width: 1px;
@@ -155,7 +204,7 @@ button, input { font: inherit; }
 .titleBlock { min-width: 220px; margin-right: auto; }
 .eyebrow { color: var(--yd-muted); font-size: 11px; letter-spacing: 0.08em; }
 h1 { font-size: 16px; line-height: 1.25; margin: 1px 0 0; font-weight: 650; }
-h1 span { color: var(--yd-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 500; }
+h1 span { color: var(--yd-muted); font-family: var(--yd-code-font); font-weight: 500; font-variant-numeric: tabular-nums; }
 .largeDiffBadge { display: inline-flex; margin-top: 4px; padding: 2px 7px; border: 1px solid var(--yd-warn-border); border-radius: 999px; background: var(--yd-warn-bg); color: var(--yd-warn-text); font-size: 11px; }
 
 
@@ -205,7 +254,6 @@ h1 span { color: var(--yd-muted); font-family: ui-monospace, SFMono-Regular, Men
   border-radius: 6px;
   background: var(--yd-kbd-bg);
   color: var(--yd-fg);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
   text-align: center;
 }
@@ -291,6 +339,17 @@ h1 span { color: var(--yd-muted); font-family: ui-monospace, SFMono-Regular, Men
   --trees-search-bg-override: var(--yd-accent-bg);
   --trees-search-fg-override: var(--yd-accent-text);
   --trees-focus-ring-color-override: var(--yd-accent);
+  --trees-accent-override: var(--yd-accent);
+  --trees-status-added-override: var(--yd-plus);
+  --trees-status-untracked-override: var(--yd-plus);
+  --trees-status-modified-override: var(--yd-warn-text);
+  --trees-status-deleted-override: var(--yd-minus);
+  --trees-status-renamed-override: var(--yd-accent-text);
+  --trees-git-added-color-override: var(--yd-plus);
+  --trees-git-untracked-color-override: var(--yd-plus);
+  --trees-git-modified-color-override: var(--yd-warn-text);
+  --trees-git-deleted-color-override: var(--yd-minus);
+  --trees-git-renamed-color-override: var(--yd-accent-text);
   border-radius: 12px;
   overflow: hidden;
   flex: 1;
@@ -332,7 +391,8 @@ h1 span { color: var(--yd-muted); font-family: ui-monospace, SFMono-Regular, Men
 .commitItem.active { background: var(--yd-accent-bg); color: var(--yd-fg); }
 .commitItemShortId {
   flex: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--yd-code-font);
+  font-variant-numeric: tabular-nums;
   color: var(--yd-accent-text);
   font-size: 11px;
 }
@@ -348,6 +408,12 @@ h1 span { color: var(--yd-muted); font-family: ui-monospace, SFMono-Regular, Men
 
 .viewer { grid-area: viewer; min-height: 0; min-width: 0; padding: 0; }
 .codeView {
+  --diffs-font-family: var(--yd-code-font);
+  --diffs-font-size: 14px;
+  --diffs-font-features: "tnum";
+  --diffs-tab-size: 4;
+  /* Equalize x-height so every face reads at the same size. */
+  font-size-adjust: ex-height 0.52;
   height: 100%;
   min-height: 0;
   overflow: auto;
@@ -394,7 +460,6 @@ h1 span { color: var(--yd-muted); font-family: ui-monospace, SFMono-Regular, Men
   font-size: 11px;
   line-height: 1;
   font-weight: 800;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   background: var(--yd-change-modified-bg);
   color: var(--yd-change-modified-fg);
 }
@@ -441,12 +506,14 @@ h1 span { color: var(--yd-muted); font-family: ui-monospace, SFMono-Regular, Men
   border-radius: 10px;
   background: var(--yd-review-bg);
   color: var(--yd-fg);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--yd-code-font);
+  font-size: 15px;
+  font-size-adjust: ex-height 0.52;
   white-space: normal;
 }
 .reviewDraft { border-color: var(--yd-accent-border); }
 .reviewAnnotationMeta { color: var(--yd-accent-text); font-size: 12px; margin-bottom: 8px; }
-.reviewAnnotationBody { line-height: 1.45; white-space: pre-wrap; }
+.reviewAnnotationBody { line-height: 1.55; white-space: pre-wrap; }
 .reviewTextarea {
   display: block;
   width: 100%;

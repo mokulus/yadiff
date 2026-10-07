@@ -1,7 +1,7 @@
 import { CodeView } from '@pierre/diffs/react';
-import { useMemo } from 'react';
+import { type CSSProperties, useMemo } from 'react';
 
-import { REVIEW_UNSAFE_CSS } from '../constants';
+import { CODE_LINE_HEIGHT, DIFF_UNSAFE_CSS } from '../constants';
 import type { ProjectedFileIdentity } from '../diffProjection';
 import { createDraftReview, isFileReviewTarget, reviewMatchesFile, saveDraftReview } from '../reviews';
 import type { DiffViewerModel } from '../useDiffViewerModel';
@@ -71,7 +71,7 @@ export function DiffViewer({
     }, [reviews]);
 
     return (
-        <main className="viewer">
+        <main className="viewer" style={{ '--diffs-line-height': `${CODE_LINE_HEIGHT}px` } as CSSProperties}>
             {parsed.codeViewItems.length === 0 ? (
                 <div className="empty">No patch content found for this target.</div>
             ) : (
@@ -97,8 +97,9 @@ export function DiffViewer({
                         enableGutterUtility: true,
                         enableLineSelection: true,
                         stickyHeaders: true,
-                        unsafeCSS: REVIEW_UNSAFE_CSS,
+                        unsafeCSS: DIFF_UNSAFE_CSS,
                         layout: { paddingTop: 12, paddingBottom: 32, gap: 12 },
+                        itemMetrics: { lineHeight: CODE_LINE_HEIGHT },
                         onGutterUtilityClick: (range, context) => {
                             if (context.item.type !== 'diff') {
                                 return;

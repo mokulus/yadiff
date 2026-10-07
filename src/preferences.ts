@@ -1,3 +1,4 @@
+import { isCodeFontId, type CodeFontId } from './codeFonts';
 import type { DiffStyle, Overflow } from './types';
 import type { ThemeMode } from './useTheme';
 
@@ -8,6 +9,7 @@ interface Preferences {
     diffStyle?: DiffStyle;
     overflow?: Overflow;
     themeMode?: ThemeMode;
+    codeFont?: CodeFontId;
 }
 
 const DEFAULT_PREFERENCES: Preferences = { version: 1 };
@@ -26,6 +28,7 @@ function parsePreferences(value: string | null): Preferences {
             diffStyle: parsed.diffStyle === 'split' || parsed.diffStyle === 'unified' ? parsed.diffStyle : undefined,
             overflow: parsed.overflow === 'scroll' || parsed.overflow === 'wrap' ? parsed.overflow : undefined,
             themeMode: parsed.themeMode === 'auto' || parsed.themeMode === 'light' || parsed.themeMode === 'dark' ? parsed.themeMode : undefined,
+            codeFont: isCodeFontId(parsed.codeFont) ? parsed.codeFont : undefined,
         };
     } catch {
         return DEFAULT_PREFERENCES;

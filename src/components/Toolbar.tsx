@@ -1,3 +1,4 @@
+import { CODE_FONTS } from '../codeFonts';
 import { formatSource } from '../format';
 import type { DiffViewerModel } from '../useDiffViewerModel';
 import { useThemeContext } from '../useTheme';
@@ -95,6 +96,9 @@ export function Toolbar({
                 </PillButton>
                 <PillButton active={theme.mode !== 'auto'} onClick={theme.cycleTheme} title="Cycle theme: auto / light / dark (D)">
                     {themeLabel} (D)
+                </PillButton>
+                <PillButton onClick={theme.cycleCodeFont} title="Cycle code font (F)">
+                    {CODE_FONTS.find((font) => font.id === theme.codeFont)?.label} (F)
                 </PillButton>
                 <PillButton active={allCollapsed} onClick={toggleAllCollapsed} title={allCollapsed ? 'Expand all files (C)' : 'Collapse all files (C)'}>
                     {allCollapsed ? 'Expand (C)' : 'Collapse (C)'}

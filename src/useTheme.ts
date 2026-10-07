@@ -1,5 +1,6 @@
 import { createContext, use, useCallback, useEffect, useMemo, useState } from 'react';
 
+import { DEFAULT_CODE_FONT, nextCodeFont, type CodeFontId } from './codeFonts';
 import { loadPreferences, savePreferences } from './preferences';
 
 export type ThemeMode = 'light' | 'dark' | 'auto';
@@ -16,6 +17,7 @@ function loadPersistedMode(): ThemeMode {
 export function useTheme() {
     const [mode, setModeRaw] = useState<ThemeMode>(loadPersistedMode);
     const [systemTheme, setSystemTheme] = useState<ResolvedTheme>(getSystemTheme);
+    const [codeFont, setCodeFont] = useState<CodeFontId>(() => loadPreferences().codeFont ?? DEFAULT_CODE_FONT);
 
     useEffect(() => {
         const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -29,6 +31,18 @@ export function useTheme() {
     useEffect(() => {
         document.documentElement.dataset.theme = resolved;
     }, [resolved]);
+
+    useEffect(() => {
+        document.documentElement.dataset.codeFont = codeFont;
+    }, [codeFont]);
+
+    const cycleCodeFont = useCallback(() => {
+        setCodeFont(prev => {
+            const next = nextCodeFont(prev);
+            savePreferences({ codeFont: next });
+            return next;
+        });
+    }, []);
 
     const cycleTheme = useCallback(() => {
         setModeRaw(prev => {
@@ -48,7 +62,9 @@ export function useTheme() {
         resolved,
         setMode,
         cycleTheme,
-    }), [mode, resolved, setMode, cycleTheme]);
+        codeFont,
+        cycleCodeFont,
+    }), [mode, resolved, setMode, cycleTheme, codeFont, cycleCodeFont]);
 }
 
 export type ThemeState = ReturnType<typeof useTheme>;

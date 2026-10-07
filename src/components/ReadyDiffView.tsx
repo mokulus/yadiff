@@ -49,7 +49,7 @@ export function ReadyDiffView({ model }: { model: DiffViewerModel }) {
     } = model;
 
     useKeyboardRouter({
-        actions: { ...keyboardActions, cycleTheme: theme.cycleTheme },
+        actions: { ...keyboardActions, cycleTheme: theme.cycleTheme, cycleCodeFont: theme.cycleCodeFont },
         shortcutScopeRef,
         state: keyboardState,
     });

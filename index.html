@@ -6,12 +6,14 @@
     <title>yadiff</title>
     <script>
       (function() {
-        var mode = 'auto';
-        try { mode = localStorage.getItem('yadiff:theme-mode') || 'auto'; } catch(e) {}
+        var prefs = {};
+        try { prefs = JSON.parse(localStorage.getItem('yadiff:preferences') || '{}') || {}; } catch(e) {}
+        var mode = prefs.themeMode || 'auto';
         var resolved = mode === 'auto'
           ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
           : mode;
         document.documentElement.dataset.theme = resolved;
+        document.documentElement.dataset.codeFont = prefs.codeFont || 'input-serif';
       })();
     </script>
   </head>
